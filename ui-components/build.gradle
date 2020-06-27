@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+dependencies {
+    implementation Deps.material
+
+    testImplementation Deps.testlib_junit
+
+    androidTestImplementation Deps.testandroidx_runner
+    androidTestImplementation Deps.testandroidx_espressocore
+    implementation Deps.androidx_core
+    implementation Deps.tools_kotlin_stdlib
+    implementation Deps.lifecycle_process
+    implementation Deps.lifecycle_viewmodel
+    testImplementation Deps.lifecycle_test
+}
+repositories {
+    mavenCentral()
+}

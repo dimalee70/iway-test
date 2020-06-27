@@ -3,15 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion Config.compileSdk
+    buildToolsVersion Config.buildTools
 
     defaultConfig {
         applicationId "kz.v.iwaytest"
-        minSdkVersion 25
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Config.minSdk
+        targetSdkVersion Config.targetSdk
+        versionCode Config.versionCode
+        versionName Config.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -22,15 +22,58 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    api Deps.tools_kotlin_stdlib
+    api Deps.androidx_core
+    implementation Deps.androidx_appcompat
+    testImplementation Deps.testlib_junit
+
+//    implementation project(':app')
+    // Projects
+    implementation project(':auth')
+//    implementation project(':network-components')
+    implementation project(':dep-inject')
+
+    //Network
+    implementation Deps.retroift
+    implementation Deps.retrofit_converter
+    implementation Deps.okhttp3
+
+    //Lifecycle
+    implementation Deps.lifecycle_process
+    implementation Deps.lifecycle_viewmodel
+    testImplementation Deps.lifecycle_test
+
+    // Material
+    implementation Deps.material
+
+    // Timber
+    implementation Deps.timber
+
+    // Constraint layout
+    implementation Deps.androidx_constraint
+    // Coroutines
+    implementation Deps.coroutines_core
+    implementation Deps.androidx_coroutines
+    testImplementation Deps.coroutines_core
+    testImplementation Deps.androidx_coroutines
+
+    //Koin
+    implementation Deps.androidx_koin
+    implementation Deps.koin_scope
+    implementation Deps.koin_viewmodel
+    testImplementation Deps.koin_test
+
+    androidTestImplementation Deps.testandroidx_runner
+    androidTestImplementation Deps.testandroidx_rules
+    androidTestImplementation Deps.testandroidx_espressocore
 
 }

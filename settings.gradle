@@ -1,2 +1,6 @@
+include ':dep-inject'
+include ':auth'
+include ':network-components'
+include ':ui-components'
 include ':app'
 rootProject.name = "iwaytest"

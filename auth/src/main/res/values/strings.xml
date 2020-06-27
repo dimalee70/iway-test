@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">iwaytest</string>
+    <string name="action_sent">Отправить координаты</string>
+</resources>

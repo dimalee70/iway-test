@@ -1,0 +1,101 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs"
+
+
+android {
+    compileSdkVersion Config.compileSdk
+    buildToolsVersion Config.buildTools
+
+    defaultConfig {
+        minSdkVersion Config.minSdk
+        targetSdkVersion Config.targetSdk
+        versionCode Config.versionCode
+        versionName Config.versionName
+
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    compileOptions {
+        sourceCompatibility Config.javaVersion
+        targetCompatibility Config.javaVersion
+    }
+    kotlinOptions {
+        jvmTarget = Config.javaVersion.toString()
+    }
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation Deps.tools_kotlin_stdlib
+    implementation Deps.androidx_core
+    implementation Deps.androidx_core
+    implementation Deps.androidx_appcompat
+    testImplementation Deps.testlib_junit
+
+    // Projects
+    implementation project(':ui-components')
+    implementation project(':network-components')
+    implementation project(':dep-inject')
+
+    // Navigation
+    implementation Deps.navigation_fragment
+    implementation Deps.navigaition_ui
+
+    //Lifecycle
+    implementation Deps.lifecycle_process
+    implementation Deps.lifecycle_viewmodel
+    testImplementation Deps.lifecycle_test
+
+    // Material
+    implementation Deps.material
+
+    // Timber
+    implementation Deps.timber
+
+    // Constraint layout
+    implementation Deps.androidx_constraint
+    // Coroutines
+    implementation Deps.coroutines_core
+    implementation Deps.androidx_coroutines
+    testImplementation Deps.coroutines_core
+    testImplementation Deps.androidx_coroutines
+
+    //Koin
+    implementation Deps.androidx_koin
+    implementation Deps.koin_scope
+    implementation Deps.koin_viewmodel
+    testImplementation Deps.koin_test
+
+    //Network
+    implementation Deps.retroift
+    implementation Deps.retrofit_converter
+    implementation Deps.okhttp3
+
+    androidTestImplementation Deps.testandroidx_runner
+    androidTestImplementation Deps.testandroidx_rules
+    androidTestImplementation Deps.testandroidx_espressocore
+}

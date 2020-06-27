@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">Загрузка…</string>
+    <string name="something_went_wrong">Ой! Что-то пошло не так…</string>
+    <string name="sent_data_success">Данные успешно отправились</string>
+</resources>
