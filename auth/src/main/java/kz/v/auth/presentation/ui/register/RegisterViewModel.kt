@@ -11,6 +11,8 @@ import kz.v.ui_components.utils.setError
 import kz.v.ui_components.utils.setLoading
 import kz.v.ui_components.utils.setSuccess
 import timber.log.Timber
+import java.text.SimpleDateFormat
+import java.util.*
 
 class RegisterViewModel(
     private val authUseCase: AuthUseCase,
@@ -35,11 +37,17 @@ class RegisterViewModel(
 
     private fun createCoordinates() {
         _createResponse.setLoading()
+
+        val c = Calendar.getInstance().time
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val formattedDate = simpleDateFormat.format(c)
+        Timber.i("formattedDate = $formattedDate")
+
         val params = listOf(
             CreateCoordinatesUseCase.Params(
                 point = CreateCoordinatesUseCase.Point(),
                 trip_id = 2101015,
-                sent = "2019-06-07 06:38",
+                sent = formattedDate,
                 type = 1,
                 speed = 60
             )
