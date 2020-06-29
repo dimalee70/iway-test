@@ -39,7 +39,8 @@ class RegisterViewModel(
             CreateCoordinatesUseCase.Params(
                 point = CreateCoordinatesUseCase.Point(),
                 trip_id = 2101015,
-                type = 5,
+                sent = "2019-06-07 06:38",
+                type = 1,
                 speed = 60
             )
         )

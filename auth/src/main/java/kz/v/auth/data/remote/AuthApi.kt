@@ -8,8 +8,8 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-private const val AUTH = "v3/driver/auth/auth"
-private const val CREATE = "v3/locations/create"
+private const val AUTH = "v2/driver/auth/auth"
+private const val CREATE = "v2/locations/create"
 
 interface AuthApi {
 
